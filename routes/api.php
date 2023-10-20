@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "API" middleware group. Enjoy building your API!
 |
 */
-Route::prefix('skeleton')->group(function () {
+if (Config::get('fintech.promo.enabled')) {
+    Route::prefix('skeleton')->group(function () {
 
-    //DO NOT REMOVE THIS LINE//
-});
+        //DO NOT REMOVE THIS LINE//
+    });
+}
