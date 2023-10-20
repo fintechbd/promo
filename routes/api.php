@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 if (Config::get('fintech.promo.enabled')) {
-    Route::prefix('skeleton')->group(function () {
+    Route::prefix('promo')->group(function () {
 
         //DO NOT REMOVE THIS LINE//
     });

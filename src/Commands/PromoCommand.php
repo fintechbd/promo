@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Fintech\Promo\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class PromoCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'promo';
 
     public $description = 'My command';
 

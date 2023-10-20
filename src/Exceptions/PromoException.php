@@ -1,14 +1,14 @@
 <?php
 
-namespace VendorName\Skeleton\Exceptions;
+namespace Fintech\Promo\Exceptions;
 
 use Exception;
 use Throwable;
 
 /**
- * Class SkeletonException
+ * Class PromoException
  */
-class SkeletonException extends Exception
+class PromoException extends Exception
 {
     /**
      * CoreException constructor.
