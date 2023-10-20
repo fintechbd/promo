@@ -3,7 +3,6 @@
 // config for Fintech/Promo
 return [
 
-
     /*
     |--------------------------------------------------------------------------
     | Enable Module APIs

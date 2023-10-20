@@ -2,9 +2,9 @@
 
 namespace Fintech\Promo;
 
-use Illuminate\Support\ServiceProvider;
 use Fintech\Promo\Commands\InstallCommand;
 use Fintech\Promo\Commands\PromoCommand;
+use Illuminate\Support\ServiceProvider;
 
 class PromoServiceProvider extends ServiceProvider
 {
