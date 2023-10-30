@@ -263,11 +263,14 @@ class PromotionController extends Controller
         }
     }
 
-    public function promotionType()
+    /**
+     * @return PromotionCollection|JsonResponse
+     */
+    public function promotionType(): PromotionCollection|JsonResponse
     {
         try {
             $promotionTypes = config('fintech.promo.promotional_type');
-            dd($promotionTypes);
+            return new PromotionCollection($promotionTypes);
 
         } catch (Exception $exception) {
 
