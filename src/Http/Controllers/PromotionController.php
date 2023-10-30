@@ -60,9 +60,6 @@ class PromotionController extends Controller
      *  Create a new *Promotion* resource in storage.
      *
      * @lrd:end
-     *
-     * @param StorePromotionRequest $request
-     * @return JsonResponse
      */
     public function store(StorePromotionRequest $request): JsonResponse
     {
@@ -91,9 +88,6 @@ class PromotionController extends Controller
      * Return a specified *Promotion* resource found by id.
      *
      * @lrd:end
-     *
-     * @param string|int $id
-     * @return PromotionResource|JsonResponse
      */
     public function show(string|int $id): PromotionResource|JsonResponse
     {
@@ -122,10 +116,6 @@ class PromotionController extends Controller
      * Update a specified *Promotion* resource using id.
      *
      * @lrd:end
-     *
-     * @param UpdatePromotionRequest $request
-     * @param string|int $id
-     * @return JsonResponse
      */
     public function update(UpdatePromotionRequest $request, string|int $id): JsonResponse
     {
@@ -161,8 +151,6 @@ class PromotionController extends Controller
      * Soft delete a specified *Promotion* resource using id.
      *
      * @lrd:end
-     * @param string|int $id
-     * @return JsonResponse
      */
     public function destroy(string|int $id): JsonResponse
     {
@@ -197,8 +185,6 @@ class PromotionController extends Controller
      * ** ```Soft Delete``` needs to enabled to use this feature**
      *
      * @lrd:end
-     * @param string|int $id
-     * @return JsonResponse
      */
     public function restore(string|int $id): JsonResponse
     {
@@ -233,8 +219,6 @@ class PromotionController extends Controller
      * After export job is done system will fire  export completed event
      *
      * @lrd:end
-     * @param IndexPromotionRequest $request
-     * @return JsonResponse
      */
     public function export(IndexPromotionRequest $request): JsonResponse
     {
@@ -257,8 +241,6 @@ class PromotionController extends Controller
      * After export job is done system will fire  export completed event
      *
      * @lrd:end
-     * @param ImportPromotionRequest $request
-     * @return PromotionCollection|JsonResponse
      */
     public function import(ImportPromotionRequest $request): PromotionCollection|JsonResponse
     {
@@ -275,14 +257,12 @@ class PromotionController extends Controller
         }
     }
 
-    /**
-     * @return PromotionCollection|JsonResponse
-     */
     public function promotionType(): PromotionCollection|JsonResponse
     {
         //try {
-            $promotionTypes = config('fintech.promo.promotional_types');
-            return new PromotionCollection($promotionTypes);
+        $promotionTypes = config('fintech.promo.promotional_types');
+
+        return new PromotionCollection($promotionTypes);
 
         /*} catch (Exception $exception) {
 

@@ -51,9 +51,6 @@ class Promotion extends Model
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * @return array
-     */
     public function getLinksAttribute(): array
     {
         $primaryKey = $this->getKey();
