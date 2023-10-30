@@ -30,7 +30,7 @@ class PromotionCollection extends ResourceCollection
             'options' => [
                 'dir' => Constant::SORT_DIRECTIONS,
                 'per_page' => Constant::PAGINATE_LENGTHS,
-                'sort' => ['id', 'name', 'created_at', 'updated_at'],
+                'sort' => ['id', 'promotion_title', 'created_at', 'updated_at'],
             ],
             'query' => $request->all(),
         ];
