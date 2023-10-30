@@ -5,6 +5,7 @@ namespace Fintech\Promo\Interfaces;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Support\Collection;
+use InvalidArgumentException;
 use MongoDB\Laravel\Eloquent\Model as MongodbModel;
 
 /**
@@ -39,7 +40,7 @@ interface PromotionRepository
     public function update(int|string $id, array $attributes = []): EloquentModel|MongodbModel|null;
 
     /**
-     * find and delete a entry from records
+     * find and delete an entry from records
      *
      * @param int|string $id
      * @param bool $onlyTrashed
@@ -48,14 +49,14 @@ interface PromotionRepository
     public function find(int|string $id, bool $onlyTrashed = false): EloquentModel|MongodbModel|null;
 
     /**
-     * find and delete a entry from records
+     * find and delete an entry from records
      */
     public function delete(int|string $id);
 
     /**
-     * find and restore a entry from records
+     * find and restore an entry from records
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function restore(int|string $id);
 }
