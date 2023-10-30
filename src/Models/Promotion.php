@@ -54,15 +54,15 @@ class Promotion extends Model
     /**
      * @return array
      */
-    public function getLinksAttribute()
+    public function getLinksAttribute(): array
     {
         $primaryKey = $this->getKey();
 
         $links = [
-            'show' => action_link(route('promotion.Promotions.show', $primaryKey), __('core::messages.action.show'), 'get'),
-            'update' => action_link(route('promotion.Promotions.update', $primaryKey), __('core::messages.action.update'), 'put'),
-            'destroy' => action_link(route('promotion.Promotions.destroy', $primaryKey), __('core::messages.action.destroy'), 'delete'),
-            'restore' => action_link(route('promotion.Promotions.restore', $primaryKey), __('core::messages.action.restore'), 'post'),
+            'show' => action_link(route('promotion.promotions.show', $primaryKey), __('core::messages.action.show'), 'get'),
+            'update' => action_link(route('promotion.promotions.update', $primaryKey), __('core::messages.action.update'), 'put'),
+            'destroy' => action_link(route('promotion.promotions.destroy', $primaryKey), __('core::messages.action.destroy'), 'delete'),
+            'restore' => action_link(route('promotion.promotions.restore', $primaryKey), __('core::messages.action.restore'), 'post'),
         ];
 
         if ($this->getAttribute('deleted_at') == null) {
