@@ -2,9 +2,11 @@
 
 namespace Fintech\Promo\Facades;
 
+use Fintech\Promo\Services\PromotionService;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @method static PromotionService promotion()
  * @see \Fintech\Promo\Promo
  */
 class Promo extends Facade
