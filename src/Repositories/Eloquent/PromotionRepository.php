@@ -44,6 +44,10 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
             }
         }
 
+        if (isset($filters['promotion_type']) && ! empty($filters['promotion_type'])) {
+            $query->where('promotion_type', $filters['promotion_type']);
+        }
+
         //Display Trashed
         if (isset($filters['trashed']) && ! empty($filters['trashed'])) {
             $query->onlyTrashed();
