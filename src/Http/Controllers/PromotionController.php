@@ -57,11 +57,12 @@ class PromotionController extends Controller
 
     /**
      * @lrd:start
-     * Create a new *Promotion* resource in storage.
+     *  Create a new *Promotion* resource in storage.
      *
      * @lrd:end
      *
-     * @throws StoreOperationException
+     * @param StorePromotionRequest $request
+     * @return JsonResponse
      */
     public function store(StorePromotionRequest $request): JsonResponse
     {
@@ -91,7 +92,8 @@ class PromotionController extends Controller
      *
      * @lrd:end
      *
-     * @throws ModelNotFoundException
+     * @param string|int $id
+     * @return PromotionResource|JsonResponse
      */
     public function show(string|int $id): PromotionResource|JsonResponse
     {
@@ -121,7 +123,9 @@ class PromotionController extends Controller
      *
      * @lrd:end
      *
-     * @throws ModelNotFoundException
+     * @param UpdatePromotionRequest $request
+     * @param string|int $id
+     * @return JsonResponse
      */
     public function update(UpdatePromotionRequest $request, string|int $id): JsonResponse
     {
@@ -157,6 +161,8 @@ class PromotionController extends Controller
      * Soft delete a specified *Promotion* resource using id.
      *
      * @lrd:end
+     * @param string|int $id
+     * @return JsonResponse
      */
     public function destroy(string|int $id): JsonResponse
     {
@@ -191,6 +197,8 @@ class PromotionController extends Controller
      * ** ```Soft Delete``` needs to enabled to use this feature**
      *
      * @lrd:end
+     * @param string|int $id
+     * @return JsonResponse
      */
     public function restore(string|int $id): JsonResponse
     {
@@ -225,6 +233,8 @@ class PromotionController extends Controller
      * After export job is done system will fire  export completed event
      *
      * @lrd:end
+     * @param IndexPromotionRequest $request
+     * @return JsonResponse
      */
     public function export(IndexPromotionRequest $request): JsonResponse
     {
@@ -247,6 +257,8 @@ class PromotionController extends Controller
      * After export job is done system will fire  export completed event
      *
      * @lrd:end
+     * @param ImportPromotionRequest $request
+     * @return PromotionCollection|JsonResponse
      */
     public function import(ImportPromotionRequest $request): PromotionCollection|JsonResponse
     {
@@ -268,13 +280,13 @@ class PromotionController extends Controller
      */
     public function promotionType(): PromotionCollection|JsonResponse
     {
-        try {
-            $promotionTypes = config('fintech.promo.promotional_type');
+        //try {
+            $promotionTypes = config('fintech.promo.promotional_types');
             return new PromotionCollection($promotionTypes);
 
-        } catch (Exception $exception) {
+        /*} catch (Exception $exception) {
 
             return $this->failed($exception->getMessage());
-        }
+        }*/
     }
 }
