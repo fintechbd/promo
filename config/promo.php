@@ -57,7 +57,7 @@ return [
     | This value will be used across systems where a constant instance is needed
     */
 
-    'promotional_type' => [
+    'promotional_types' => [
         'event' => 'Event',
         'news' => 'News',
         'partners' => 'Partners',
