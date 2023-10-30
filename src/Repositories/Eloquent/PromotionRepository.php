@@ -4,6 +4,7 @@ namespace Fintech\Promo\Repositories\Eloquent;
 
 use Fintech\Core\Repositories\EloquentRepository;
 use Fintech\Promo\Interfaces\PromotionRepository as InterfacesPromotionRepository;
+use Fintech\Promo\Models\Promotion;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +17,7 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
 {
     public function __construct()
     {
-        $model = app(config('fintech.promo.promotion_model', \Fintech\Promo\Models\Promotion::class));
+        $model = app(config('fintech.promo.promotion_model', Promotion::class));
 
         if (! $model instanceof Model) {
             throw new InvalidArgumentException("Eloquent repository require model class to be `Illuminate\Database\Eloquent\Model` instance.");
