@@ -22,7 +22,7 @@ return [
     | Note: while adding prefix add closing ending slash '/'
     */
 
-    'root_prefix' => 'test/',
+    'root_prefix' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -47,6 +47,23 @@ return [
         \Fintech\Promo\Interfaces\PromotionRepository::class => \Fintech\Promo\Repositories\Eloquent\PromotionRepository::class,
 
         //** Repository Binding Config Point Do not Remove **//
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Constant
+    |--------------------------------------------------------------------------
+    |
+    | This value will be used across systems where a constant instance is needed
+    */
+
+    'promotional_type' => [
+        'event' => 'Event',
+        'news' => 'News',
+        'partners' => 'Partners',
+        'achievements' => 'Achievements',
+        'media' => 'Media',
+        'banner' => 'Banner',
     ],
 
 ];
