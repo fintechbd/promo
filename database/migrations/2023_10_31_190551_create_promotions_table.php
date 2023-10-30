@@ -13,6 +13,11 @@ return new class() extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('present_country_id')->nullable();
+            $table->foreignId('permanent_country_id')->nullable();
+            $table->string('promotion_type');
+            $table->string('promotion_title');
+            $table->json('promotion_data')->nullable();
             $table->boolean('enabled')->nullable();
             $table->foreignId('creator_id')->nullable();
             $table->foreignId('editor_id')->nullable();
