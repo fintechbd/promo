@@ -11,10 +11,10 @@ class PromotionCollection extends ResourceCollection
     /**
      * Transform the resource collection into an array.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray(Request $request): array
     {
         return parent::toArray($request);
     }
