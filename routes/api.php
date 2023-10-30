@@ -1,5 +1,6 @@
 <?php
 
+use Fintech\Promo\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 if (Config::get('fintech.promo.enabled')) {
     Route::prefix('promo')->name('promo.')->group(function () {
 
-        Route::apiResource('promotions', \Fintech\Promo\Http\Controllers\PromotionController::class);
-        Route::post('promotions/{promotion}/restore', [\Fintech\Promo\Http\Controllers\PromotionController::class, 'restore'])->name('promotions.restore');
+        Route::apiResource('promotions', PromotionController::class);
+        Route::post('promotions/{promotion}/restore', [PromotionController::class, 'restore'])->name('promotions.restore');
 
         //DO NOT REMOVE THIS LINE//
     });
