@@ -24,6 +24,16 @@ return [
 
     'root_prefix' => 'test/',
 
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Promotion Model
+    |--------------------------------------------------------------------------
+    |
+    | This value will be used to across system where model is needed
+    */
+    'promotion_model' => \Fintech\Promo\Models\Promotion::class,
+
     //** Model Config Point Do not Remove **//
 
     /*
@@ -35,6 +45,8 @@ return [
     */
 
     'repositories' => [
+        \Fintech\Promo\Interfaces\PromotionRepository::class => \Fintech\Promo\Repositories\Eloquent\PromotionRepository::class,
+
         //** Repository Binding Config Point Do not Remove **//
     ],
 
