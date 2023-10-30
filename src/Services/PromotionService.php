@@ -3,7 +3,9 @@
 namespace Fintech\Promo\Services;
 
 use Fintech\Promo\Interfaces\PromotionRepository;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Class PromotionService
@@ -21,9 +23,9 @@ class PromotionService
 
     /**
      * @param array $filters
-     * @return mixed
+     * @return Collection|Paginator
      */
-    public function list(array $filters = []): mixed
+    public function list(array $filters = []): Collection|Paginator
     {
         return $this->promotionRepository->list($filters);
 
@@ -33,45 +35,45 @@ class PromotionService
      * @param array $inputs
      * @return Model|\MongoDB\Laravel\Eloquent\Model|null
      */
-    public function create(array $inputs = []): \Illuminate\Database\Eloquent\Model|\MongoDB\Laravel\Eloquent\Model|null
+    public function create(array $inputs = []): Model|\MongoDB\Laravel\Eloquent\Model|null
     {
         return $this->promotionRepository->create($inputs);
     }
 
     /**
-     * @param $id
-     * @param $onlyTrashed
+     * @param int | string $id
+     * @param bool $onlyTrashed
      * @return Model|\MongoDB\Laravel\Eloquent\Model|null
      */
-    public function find($id, $onlyTrashed = false): Model|\MongoDB\Laravel\Eloquent\Model|null
+    public function find(int | string $id, bool $onlyTrashed = false): Model|\MongoDB\Laravel\Eloquent\Model|null
     {
         return $this->promotionRepository->find($id, $onlyTrashed);
     }
 
     /**
-     * @param $id
+     * @param int | string $id
      * @param array $inputs
      * @return Model|\MongoDB\Laravel\Eloquent\Model|null
      */
-    public function update($id, array $inputs = []): Model|\MongoDB\Laravel\Eloquent\Model|null
+    public function update(int | string $id, array $inputs = []): Model|\MongoDB\Laravel\Eloquent\Model|null
     {
         return $this->promotionRepository->update($id, $inputs);
     }
 
     /**
-     * @param $id
+     * @param int | string $id
      * @return mixed
      */
-    public function destroy($id): mixed
+    public function destroy(int | string $id): mixed
     {
         return $this->promotionRepository->delete($id);
     }
 
     /**
-     * @param $id
+     * @param int | string $id
      * @return mixed
      */
-    public function restore($id): mixed
+    public function restore(int | string $id): mixed
     {
         return $this->promotionRepository->restore($id);
     }
