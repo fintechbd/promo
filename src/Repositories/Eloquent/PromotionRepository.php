@@ -11,19 +11,18 @@ use InvalidArgumentException;
 
 /**
  * Class PromotionRepository
- * @package Fintech\Promo\Repositories\Eloquent
  */
 class PromotionRepository extends EloquentRepository implements InterfacesPromotionRepository
 {
     public function __construct()
     {
-       $model = app(config('fintech.promo.promotion_model', \Fintech\Promo\Models\Promotion::class));
+        $model = app(config('fintech.promo.promotion_model', \Fintech\Promo\Models\Promotion::class));
 
-       if (!$model instanceof Model) {
-           throw new InvalidArgumentException("Eloquent repository require model class to be `Illuminate\Database\Eloquent\Model` instance.");
-       }
+        if (! $model instanceof Model) {
+            throw new InvalidArgumentException("Eloquent repository require model class to be `Illuminate\Database\Eloquent\Model` instance.");
+        }
 
-       $this->model = $model;
+        $this->model = $model;
     }
 
     /**
@@ -46,7 +45,7 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
         }
 
         //Display Trashed
-        if (isset($filters['trashed']) && !empty($filters['trashed'])) {
+        if (isset($filters['trashed']) && ! empty($filters['trashed'])) {
             $query->onlyTrashed();
         }
 

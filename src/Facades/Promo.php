@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static PromotionService promotion()
+ *
  * @see \Fintech\Promo\Promo
  */
 class Promo extends Facade

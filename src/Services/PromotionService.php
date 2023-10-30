@@ -2,26 +2,22 @@
 
 namespace Fintech\Promo\Services;
 
-
 use Fintech\Promo\Interfaces\PromotionRepository;
 
 /**
  * Class PromotionService
- * @package Fintech\Promo\Services
- *
  */
 class PromotionService
 {
     /**
      * PromotionService constructor.
-     * @param PromotionRepository $promotionRepository
      */
-    public function __construct(PromotionRepository $promotionRepository) {
+    public function __construct(PromotionRepository $promotionRepository)
+    {
         $this->promotionRepository = $promotionRepository;
     }
 
     /**
-     * @param array $filters
      * @return mixed
      */
     public function list(array $filters = [])

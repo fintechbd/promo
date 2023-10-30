@@ -6,24 +6,23 @@ use Fintech\Core\Repositories\MongodbRepository;
 use Fintech\Promo\Interfaces\PromotionRepository as InterfacesPromotionRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
-use MongoDB\Laravel\Eloquent\Model;
 use InvalidArgumentException;
+use MongoDB\Laravel\Eloquent\Model;
 
 /**
  * Class PromotionRepository
- * @package Fintech\Promo\Repositories\Mongodb
  */
 class PromotionRepository extends MongodbRepository implements InterfacesPromotionRepository
 {
     public function __construct()
     {
-       $model = app(config('fintech.promo.promotion_model', \Fintech\Promo\Models\Promotion::class));
+        $model = app(config('fintech.promo.promotion_model', \Fintech\Promo\Models\Promotion::class));
 
-       if (!$model instanceof Model) {
-           throw new InvalidArgumentException("Mongodb repository require model class to be `MongoDB\Laravel\Eloquent\Model` instance.");
-       }
+        if (! $model instanceof Model) {
+            throw new InvalidArgumentException("Mongodb repository require model class to be `MongoDB\Laravel\Eloquent\Model` instance.");
+        }
 
-       $this->model = $model;
+        $this->model = $model;
     }
 
     /**
@@ -46,7 +45,7 @@ class PromotionRepository extends MongodbRepository implements InterfacesPromoti
         }
 
         //Display Trashed
-        if (isset($filters['trashed']) && !empty($filters['trashed'])) {
+        if (isset($filters['trashed']) && ! empty($filters['trashed'])) {
             $query->onlyTrashed();
         }
 
