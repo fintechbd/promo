@@ -40,7 +40,7 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {
-                $query->where('name', 'like', "%{$filters['search']}%");
+                $query->where('promotion_title', 'like', "%{$filters['search']}%");
             }
         }
 
