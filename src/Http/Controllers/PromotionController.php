@@ -262,4 +262,16 @@ class PromotionController extends Controller
             return $this->failed($exception->getMessage());
         }
     }
+
+    public function promotionType()
+    {
+        try {
+            $promotionTypes = config('fintech.promo.promotional_type');
+            dd($promotionTypes);
+
+        } catch (Exception $exception) {
+
+            return $this->failed($exception->getMessage());
+        }
+    }
 }
