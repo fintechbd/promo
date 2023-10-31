@@ -33,6 +33,15 @@ return [
     */
     'promotion_model' => \Fintech\Promo\Models\Promotion::class,
 
+    'promotion_category' => [
+        'event' => 'Event',
+        'news' => 'News',
+        'partner' => 'Partner',
+        'achievement' => 'Achievement',
+        'media' => 'Media',
+        'banner' => 'Banner',
+    ],
+
     //** Model Config Point Do not Remove **//
 
     /*
