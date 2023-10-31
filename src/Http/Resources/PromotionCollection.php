@@ -13,7 +13,7 @@ class PromotionCollection extends ResourceCollection
     /**
      * Transform the resource collection into an array.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return array
      */
     public function toArray($request)
@@ -39,7 +39,7 @@ class PromotionCollection extends ResourceCollection
                 'dir' => Constant::SORT_DIRECTIONS,
                 'per_page' => Constant::PAGINATE_LENGTHS,
                 'sort' => ['id', 'name', 'category', 'created_at', 'updated_at'],
-                'country_id' => $countries
+                'country_id' => $countries,
             ],
             'query' => $request->all(),
         ];
