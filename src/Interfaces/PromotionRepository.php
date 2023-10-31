@@ -17,22 +17,22 @@ interface PromotionRepository
      * return a list or pagination of items from
      * filtered options
      */
-    public function list(array $filters = []): Paginator|Collection;
+    public function list(array $filters = []);
 
     /**
      * Create a new entry resource
      */
-    public function create(array $attributes = []): EloquentModel|MongodbModel|null;
+    public function create(array $attributes = []);
 
     /**
      * find and update a resource attributes
      */
-    public function update(int|string $id, array $attributes = []): EloquentModel|MongodbModel|null;
+    public function update(int|string $id, array $attributes = []);
 
     /**
      * find and delete an entry from records
      */
-    public function find(int|string $id, bool $onlyTrashed = false): EloquentModel|MongodbModel|null;
+    public function find(int|string $id, bool $onlyTrashed = false);
 
     /**
      * find and delete an entry from records

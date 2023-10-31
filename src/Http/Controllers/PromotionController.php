@@ -74,7 +74,7 @@ class PromotionController extends Controller
 
             return $this->created([
                 'message' => __('core::messages.resource.created', ['model' => 'Promotion']),
-                'id' => $promotion->id,
+                'id' => $promotion->getKey(),
             ]);
 
         } catch (Exception $exception) {
