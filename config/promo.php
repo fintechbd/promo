@@ -34,18 +34,18 @@ return [
     'promotion_model' => \Fintech\Promo\Models\Promotion::class,
 
     /*
-        |--------------------------------------------------------------------------
-        | Constant
-        |--------------------------------------------------------------------------
-        |
-        | This value will be used across systems where a constant instance is needed
-        */
+    |--------------------------------------------------------------------------
+    | Constant
+    |--------------------------------------------------------------------------
+    |
+    | This value will be used across systems where a constant instance is needed
+    */
 
     'promotion_types' => [
         'event' => 'Event',
         'news' => 'News',
-        'partners' => 'Partners',
-        'achievements' => 'Achievements',
+        'partner' => 'Partner',
+        'achievement' => 'Achievement',
         'media' => 'Media',
         'banner' => 'Banner',
     ],
