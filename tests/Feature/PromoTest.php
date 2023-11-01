@@ -80,3 +80,21 @@ function createPromotionAchievement(): MYSQLDBLEBUPAY|MONGODB|null
         'enabled' => '1',
     ]);
 }
+
+/**
+ * @return MYSQLDBLEBUPAY|MONGODB|null
+ */
+function createPromotionMedia(): MYSQLDBLEBUPAY|MONGODB|null
+{
+    return \Fintech\Promo\Facades\Promo::promotion()->create([
+        'present_country_id' => 1,
+        'permanent_country_id' => 1,
+        'name' => Str::random(20),
+        'type' => 'media',
+        'content' => Str::random(200),
+        'link' => '',
+        'promotion_data' => [
+        ],
+        'enabled' => '1',
+    ]);
+}
