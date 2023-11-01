@@ -27,3 +27,20 @@ function createPromotionEvent(): MYSQLDBLEBUPAY|MONGODB|null
     ]);
 }
 
+/**
+ * @return MYSQLDBLEBUPAY|MONGODB|null
+ */
+function createPromotionNews(): MYSQLDBLEBUPAY|MONGODB|null
+{
+    return \Fintech\Promo\Facades\Promo::promotion()->create([
+        'present_country_id' => 1,
+        'permanent_country_id' => 1,
+        'name' => Str::random(20),
+        'type' => 'news',
+        'content' => Str::random(200),
+        'link' => '',
+        'promotion_data' => [
+        ],
+        'enabled' => '1',
+    ]);
+}
