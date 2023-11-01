@@ -32,7 +32,7 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
      *
      * @return Paginator|Collection
      */
-    public function list(array $filters = [])
+    public function list(array $filters = []): Paginator|Collection
     {
         $query = $this->model->newQuery();
 
