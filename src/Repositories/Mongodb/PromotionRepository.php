@@ -4,6 +4,7 @@ namespace Fintech\Promo\Repositories\Mongodb;
 
 use Fintech\Core\Repositories\MongodbRepository;
 use Fintech\Promo\Interfaces\PromotionRepository as InterfacesPromotionRepository;
+use Fintech\Promo\Models\Promotion;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use InvalidArgumentException;
@@ -16,7 +17,7 @@ class PromotionRepository extends MongodbRepository implements InterfacesPromoti
 {
     public function __construct()
     {
-        $model = app(config('fintech.promo.promotion_model', \Fintech\Promo\Models\Promotion::class));
+        $model = app(config('fintech.promo.promotion_model', Promotion::class));
 
         if (! $model instanceof Model) {
             throw new InvalidArgumentException("Mongodb repository require model class to be `MongoDB\Laravel\Eloquent\Model` instance.");
@@ -28,10 +29,8 @@ class PromotionRepository extends MongodbRepository implements InterfacesPromoti
     /**
      * return a list or pagination of items from
      * filtered options
-     *
-     * @return Paginator|Collection
      */
-    public function list(array $filters = [])
+    public function list(array $filters = []): Paginator|Collection
     {
         $query = $this->model->newQuery();
 
@@ -40,8 +39,12 @@ class PromotionRepository extends MongodbRepository implements InterfacesPromoti
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {
-                $query->where('name', 'like', "%{$filters['search']}%");
+                $query->where('promotion_title', 'like', "%{$filters['search']}%");
             }
+        }
+
+        if (isset($filters['promotion_type']) && ! empty($filters['promotion_type'])) {
+            $query->where('promotion_type', $filters['promotion_type']);
         }
 
         //Display Trashed

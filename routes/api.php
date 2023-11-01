@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 if (Config::get('fintech.promo.enabled')) {
     Route::prefix('promo')->name('promo.')->group(function () {
 
+        Route::get('promotions/promotion-types', [PromotionController::class, 'types'])->name('promotions.promotion-types');
         Route::apiResource('promotions', PromotionController::class);
         Route::post('promotions/{promotion}/restore', [PromotionController::class, 'restore'])->name('promotions.restore');
 

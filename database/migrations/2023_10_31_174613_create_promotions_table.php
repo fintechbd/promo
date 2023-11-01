@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable();
+            $table->foreignId('present_country_id')->nullable();
+            $table->foreignId('permanent_country_id')->nullable();
             $table->string('name')->nullable();
-            $table->string('category')->nullable();
+            $table->string('type')->nullable();
             $table->longText('content')->nullable();
             $table->text('link')->nullable();
             $table->boolean('enabled')->default(true);

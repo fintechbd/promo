@@ -3,9 +3,14 @@
 namespace Fintech\Promo\Services;
 
 use Fintech\Promo\Interfaces\PromotionRepository;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Class PromotionService
+ *
+ * @property PromotionRepository $promotionRepository
  */
 class PromotionService
 {
@@ -17,46 +22,43 @@ class PromotionService
         $this->promotionRepository = $promotionRepository;
     }
 
-    /**
-     * @return mixed
-     */
-    public function list(array $filters = [])
+    public function list(array $filters = []): Collection|Paginator
     {
         return $this->promotionRepository->list($filters);
 
     }
 
-    public function create(array $inputs = [])
+    public function create(array $inputs = []): Model|\MongoDB\Laravel\Eloquent\Model|null
     {
         return $this->promotionRepository->create($inputs);
     }
 
-    public function find($id, $onlyTrashed = false)
+    public function find(int|string $id, bool $onlyTrashed = false): Model|\MongoDB\Laravel\Eloquent\Model|null
     {
         return $this->promotionRepository->find($id, $onlyTrashed);
     }
 
-    public function update($id, array $inputs = [])
+    public function update(int|string $id, array $inputs = []): Model|\MongoDB\Laravel\Eloquent\Model|null
     {
         return $this->promotionRepository->update($id, $inputs);
     }
 
-    public function destroy($id)
+    public function destroy(int|string $id): mixed
     {
         return $this->promotionRepository->delete($id);
     }
 
-    public function restore($id)
+    public function restore(int|string $id): mixed
     {
         return $this->promotionRepository->restore($id);
     }
 
-    public function export(array $filters)
+    public function export(array $filters): mixed
     {
         return $this->permissionRepository->list($filters);
     }
 
-    public function import(array $filters)
+    public function import(array $filters): mixed
     {
         return $this->permissionRepository->create($filters);
     }

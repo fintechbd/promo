@@ -15,6 +15,7 @@ use Fintech\Promo\Http\Requests\StorePromotionRequest;
 use Fintech\Promo\Http\Requests\UpdatePromotionRequest;
 use Fintech\Promo\Http\Resources\PromotionCollection;
 use Fintech\Promo\Http\Resources\PromotionResource;
+use Fintech\Promo\Http\Resources\PromotionTypeResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
@@ -57,11 +58,9 @@ class PromotionController extends Controller
 
     /**
      * @lrd:start
-     * Create a new *Promotion* resource in storage.
+     *  Create a new *Promotion* resource in storage.
      *
      * @lrd:end
-     *
-     * @throws StoreOperationException
      */
     public function store(StorePromotionRequest $request): JsonResponse
     {
@@ -76,7 +75,7 @@ class PromotionController extends Controller
 
             return $this->created([
                 'message' => __('core::messages.resource.created', ['model' => 'Promotion']),
-                'id' => $promotion->id,
+                'id' => $promotion->getKey(),
             ]);
 
         } catch (Exception $exception) {
@@ -90,8 +89,6 @@ class PromotionController extends Controller
      * Return a specified *Promotion* resource found by id.
      *
      * @lrd:end
-     *
-     * @throws ModelNotFoundException
      */
     public function show(string|int $id): PromotionResource|JsonResponse
     {
@@ -120,8 +117,6 @@ class PromotionController extends Controller
      * Update a specified *Promotion* resource using id.
      *
      * @lrd:end
-     *
-     * @throws ModelNotFoundException
      */
     public function update(UpdatePromotionRequest $request, string|int $id): JsonResponse
     {
@@ -256,6 +251,19 @@ class PromotionController extends Controller
             $promotionPaginate = Promo::promotion()->list($inputs);
 
             return new PromotionCollection($promotionPaginate);
+
+        } catch (Exception $exception) {
+
+            return $this->failed($exception->getMessage());
+        }
+    }
+
+    public function types(): PromotionTypeResource|JsonResponse
+    {
+        try {
+            $promotionTypes = config('fintech.promo.promotion_types');
+
+            return new PromotionTypeResource($promotionTypes);
 
         } catch (Exception $exception) {
 

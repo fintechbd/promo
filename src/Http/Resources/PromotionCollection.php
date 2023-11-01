@@ -12,13 +12,35 @@ class PromotionCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
-     *
-     * @param  Request  $request
-     * @return array
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return $this->collection->map(function ($promotion) {
+            $data = [
+                'id' => $promotion->id ?? null,
+                'present_country_id' => $promotion->present_country_id ?? null,
+                'present_country_name' => null,
+                'permanent_country_id' => $promotion->permanent_country_id ?? null,
+                'permanent_country_name' => null,
+                'name' => $promotion->name ?? null,
+                'category' => $promotion->category ?? null,
+                'content' => $promotion->content ?? null,
+                'link' => $promotion->link ?? null,
+                'enabled' => $promotion->enabled ?? false,
+                'promotion_data' => $promotion->promotion_data ?? [],
+            ];
+
+            if (Core::packageExists('MetaData')) {
+
+                $promotion->load(['presentCountry', 'permanentCountry']);
+
+                $data['present_country_name'] = $promotion->presentCountry->name;
+                $data['permanent_country_name'] = $promotion->permanentCountry->name;
+            }
+
+            return $data;
+
+        })->toArray();
     }
 
     /**
@@ -28,7 +50,7 @@ class PromotionCollection extends ResourceCollection
      */
     public function with(Request $request): array
     {
-        $countries = [];
+        $countries = new \stdClass();
 
         if (Core::packageExists('MetaData')) {
             $countries = MetaData::country()->list(['enabled' => true])->pluck('name', 'id')->toArray();

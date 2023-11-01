@@ -2,15 +2,14 @@
 
 namespace Fintech\Promo\Http\Resources;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PromotionResource extends JsonResource
+class PromotionTypeResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transform the resource collection into an array.
      */
-    public function toArray(Request $request): array
+    public function toArray($request)
     {
         return parent::toArray($request);
     }
