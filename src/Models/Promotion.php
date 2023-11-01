@@ -3,12 +3,14 @@
 namespace Fintech\Promo\Models;
 
 use Fintech\Core\Traits\AuditableTrait;
+use Fintech\Promo\Traits\PromotionMetaDataRelationTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Promotion extends Model
 {
     use AuditableTrait;
+    use PromotionMetaDataRelationTrait;
     use SoftDeletes;
 
     /*

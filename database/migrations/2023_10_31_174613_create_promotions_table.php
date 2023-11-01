@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,12 @@ return new class() extends Migration
             $table->id();
             $table->foreignId('present_country_id')->nullable();
             $table->foreignId('permanent_country_id')->nullable();
-            $table->string('promotion_type');
-            $table->string('promotion_title');
+            $table->string('name')->nullable();
+            $table->string('type')->nullable();
+            $table->longText('content')->nullable();
+            $table->text('link')->nullable();
+            $table->boolean('enabled')->default(true);
             $table->json('promotion_data')->nullable();
-            $table->boolean('enabled')->nullable();
             $table->foreignId('creator_id')->nullable();
             $table->foreignId('editor_id')->nullable();
             $table->foreignId('destroyer_id')->nullable();

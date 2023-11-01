@@ -33,6 +33,23 @@ return [
     */
     'promotion_model' => \Fintech\Promo\Models\Promotion::class,
 
+    /*
+        |--------------------------------------------------------------------------
+        | Constant
+        |--------------------------------------------------------------------------
+        |
+        | This value will be used across systems where a constant instance is needed
+        */
+
+    'promotion_types' => [
+        'event' => 'Event',
+        'news' => 'News',
+        'partners' => 'Partners',
+        'achievements' => 'Achievements',
+        'media' => 'Media',
+        'banner' => 'Banner',
+    ],
+
     //** Model Config Point Do not Remove **//
 
     /*
@@ -48,22 +65,4 @@ return [
 
         //** Repository Binding Config Point Do not Remove **//
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Constant
-    |--------------------------------------------------------------------------
-    |
-    | This value will be used across systems where a constant instance is needed
-    */
-
-    'promotional_types' => [
-        'event' => 'Event',
-        'news' => 'News',
-        'partners' => 'Partners',
-        'achievements' => 'Achievements',
-        'media' => 'Media',
-        'banner' => 'Banner',
-    ],
-
 ];

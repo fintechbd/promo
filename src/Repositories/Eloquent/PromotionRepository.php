@@ -29,8 +29,6 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
     /**
      * return a list or pagination of items from
      * filtered options
-     *
-     * @return Paginator|Collection
      */
     public function list(array $filters = []): Paginator|Collection
     {
@@ -41,12 +39,22 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {
-                $query->where('promotion_title', 'like', "%{$filters['search']}%");
+                $query->where('name', 'like', "%{$filters['search']}%")
+                    ->orWhere('content', 'like', "%{$filters['search']}%")
+                    ->orWhere('type', 'like', "%{$filters['search']}%");
             }
         }
 
-        if (isset($filters['promotion_type']) && ! empty($filters['promotion_type'])) {
-            $query->where('promotion_type', $filters['promotion_type']);
+        if (isset($filters['type']) && ! empty($filters['type'])) {
+            $query->where('type', $filters['type']);
+        }
+
+        if (isset($filters['present_country_id']) && ! empty($filters['present_country_id'])) {
+            $query->where('present_country_id', $filters['present_country_id']);
+        }
+
+        if (isset($filters['permanent_country_id']) && ! empty($filters['permanent_country_id'])) {
+            $query->where('permanent_country_id', $filters['permanent_country_id']);
         }
 
         //Display Trashed
@@ -58,7 +66,7 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
         $query->orderBy($filters['sort'] ?? $this->model->getKeyName(), $filters['dir'] ?? 'asc');
 
         //Execute Output
-        return $this->executeQuery($query);
+        return $this->executeQuery($query, $filters);
 
     }
 }
