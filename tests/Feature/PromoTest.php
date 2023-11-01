@@ -21,11 +21,17 @@ function createPromotionEvent(): MYSQLDBLEBUPAY|MONGODB|null
         'type' => 'event',
         'content' => Str::random(200),
         'link' => '',
-        'promotion_data' => [
-        ],
+        'promotion_data' => null,
         'enabled' => '1',
     ]);
 }
+
+test('Promotion Event list', function () {
+    createPromotionEvent();
+    getJson('/api/promo/promotions',[
+        'type' => 'event'
+    ])->assertStatus(200);
+});
 
 /**
  * @return MYSQLDBLEBUPAY|MONGODB|null
