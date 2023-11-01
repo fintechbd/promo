@@ -29,8 +29,6 @@ class PromotionRepository extends MongodbRepository implements InterfacesPromoti
     /**
      * return a list or pagination of items from
      * filtered options
-     *
-     * @return Paginator|Collection
      */
     public function list(array $filters = []): Paginator|Collection
     {
