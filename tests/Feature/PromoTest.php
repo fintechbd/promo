@@ -4,14 +4,8 @@ use Illuminate\Database\Eloquent\Model as MYSQLDBLEBUPAY;
 use Illuminate\Support\Str;
 use MongoDB\Laravel\Eloquent\Model as MONGODB;
 
-use function Pest\Laravel\deleteJson;
 use function Pest\Laravel\getJson;
-use function Pest\Laravel\postJson;
-use function Pest\Laravel\putJson;
 
-/**
- * @return MYSQLDBLEBUPAY|MONGODB|null
- */
 function createPromotionEvent(): MYSQLDBLEBUPAY|MONGODB|null
 {
     return \Fintech\Promo\Facades\Promo::promotion()->create([
@@ -28,14 +22,11 @@ function createPromotionEvent(): MYSQLDBLEBUPAY|MONGODB|null
 
 test('Promotion Event list', function () {
     createPromotionEvent();
-    getJson('/api/promo/promotions',[
-        'type' => 'event'
+    getJson('/api/promo/promotions', [
+        'type' => 'event',
     ])->assertStatus(200);
 });
 
-/**
- * @return MYSQLDBLEBUPAY|MONGODB|null
- */
 function createPromotionNews(): MYSQLDBLEBUPAY|MONGODB|null
 {
     return \Fintech\Promo\Facades\Promo::promotion()->create([
@@ -51,9 +42,6 @@ function createPromotionNews(): MYSQLDBLEBUPAY|MONGODB|null
     ]);
 }
 
-/**
- * @return MYSQLDBLEBUPAY|MONGODB|null
- */
 function createPromotionPartner(): MYSQLDBLEBUPAY|MONGODB|null
 {
     return \Fintech\Promo\Facades\Promo::promotion()->create([
@@ -69,9 +57,6 @@ function createPromotionPartner(): MYSQLDBLEBUPAY|MONGODB|null
     ]);
 }
 
-/**
- * @return MYSQLDBLEBUPAY|MONGODB|null
- */
 function createPromotionAchievement(): MYSQLDBLEBUPAY|MONGODB|null
 {
     return \Fintech\Promo\Facades\Promo::promotion()->create([
@@ -87,9 +72,6 @@ function createPromotionAchievement(): MYSQLDBLEBUPAY|MONGODB|null
     ]);
 }
 
-/**
- * @return MYSQLDBLEBUPAY|MONGODB|null
- */
 function createPromotionMedia(): MYSQLDBLEBUPAY|MONGODB|null
 {
     return \Fintech\Promo\Facades\Promo::promotion()->create([
@@ -105,9 +87,6 @@ function createPromotionMedia(): MYSQLDBLEBUPAY|MONGODB|null
     ]);
 }
 
-/**
- * @return MYSQLDBLEBUPAY|MONGODB|null
- */
 function createPromotionBanner(): MYSQLDBLEBUPAY|MONGODB|null
 {
     return \Fintech\Promo\Facades\Promo::promotion()->create([
