@@ -258,9 +258,6 @@ class PromotionController extends Controller
         }
     }
 
-    /**
-     * @return PromotionTypeResource|JsonResponse
-     */
     public function types(): PromotionTypeResource|JsonResponse
     {
         try {
