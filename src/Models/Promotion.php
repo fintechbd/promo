@@ -12,9 +12,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Promotion extends Model implements HasMedia
 {
     use AuditableTrait;
+    use InteractsWithMedia;
     use PromotionMetaDataRelationTrait;
     use SoftDeletes;
-    use InteractsWithMedia;
 
     /*
     |--------------------------------------------------------------------------
