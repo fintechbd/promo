@@ -6,10 +6,13 @@ use Fintech\Core\Traits\AuditableTrait;
 use Fintech\Promo\Traits\PromotionMetaDataRelationTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Promotion extends Model
+class Promotion extends Model implements HasMedia
 {
     use AuditableTrait;
+    use InteractsWithMedia;
     use PromotionMetaDataRelationTrait;
     use SoftDeletes;
 
@@ -34,6 +37,18 @@ class Promotion extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('image_png')
+            ->acceptsMimeTypes(['image/png'])
+            ->singleFile()
+            ->useDisk(config('filesystems.default', 'public'));
+
+        $this->addMediaCollection('image_svg')
+            ->acceptsMimeTypes(['image/svg+xml'])
+            ->singleFile()
+            ->useDisk(config('filesystems.default', 'public'));
+    }
 
     /*
     |--------------------------------------------------------------------------
