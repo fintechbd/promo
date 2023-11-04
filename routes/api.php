@@ -19,10 +19,10 @@ if (Config::get('fintech.promo.enabled')) {
         ->middleware(config('fintech.auth.middleware'))
         ->group(function () {
 
-        Route::get('promotions/promotion-types', [PromotionController::class, 'types'])->name('promotions.promotion-types');
-        Route::apiResource('promotions', PromotionController::class);
-        Route::post('promotions/{promotion}/restore', [PromotionController::class, 'restore'])->name('promotions.restore');
+            Route::get('promotions/promotion-types', [PromotionController::class, 'types'])->name('promotions.promotion-types');
+            Route::apiResource('promotions', PromotionController::class);
+            Route::post('promotions/{promotion}/restore', [PromotionController::class, 'restore'])->name('promotions.restore');
 
-        //DO NOT REMOVE THIS LINE//
-    });
+            //DO NOT REMOVE THIS LINE//
+        });
 }
