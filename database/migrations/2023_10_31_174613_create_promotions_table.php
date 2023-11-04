@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('type')->nullable();
             $table->longText('content')->nullable();
-            $table->text('link')->nullable();
             $table->boolean('enabled')->default(true);
             $table->json('promotion_data')->nullable();
             $table->foreignId('creator_id')->nullable();
