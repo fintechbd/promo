@@ -10,4 +10,6 @@ class Promo
     {
         return app(PromotionService::class);
     }
+
+    //** Crud Service Method Point Do not Remove **//
 }
