@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static PromotionService promotion()
+ * // Crud Service Method Point Do not Remove //
  *
  * @see \Fintech\Promo\Promo
  */
