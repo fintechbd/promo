@@ -16,7 +16,7 @@ function createPromotionEvent(): MYSQLDBLEBUPAY|MONGODB|null
         'content' => fake()->paragraph,
         'link' => fake()->url,
         'promotion_data' => [
-            'promotion_image' => fake()->imageUrl
+            'promotion_image' => fake()->imageUrl,
         ],
         'enabled' => '1',
     ]);

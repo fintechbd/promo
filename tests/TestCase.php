@@ -3,7 +3,6 @@
 namespace Fintech\Promo\Tests;
 
 use Fintech\Promo\PromoServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Orchestra\Testbench\TestCase as Orchestra;
 
