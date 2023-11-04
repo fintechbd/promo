@@ -30,7 +30,8 @@ class ImportPromotionRequest extends FormRequest
             'content' => ['nullable', 'string', 'min:1'],
             'link' => ['nullable', 'string', 'url'],
             'enabled' => ['required', 'boolean'],
-            'promotion_data' => ['nullable', 'array'],
+            'promotion_data' => ['required', 'array'],
+            'promotion_data.promotion_image.*' => ['nullable', 'string'],
         ];
     }
 
