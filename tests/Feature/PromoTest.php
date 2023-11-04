@@ -11,11 +11,13 @@ function createPromotionEvent(): MYSQLDBLEBUPAY|MONGODB|null
     return \Fintech\Promo\Facades\Promo::promotion()->create([
         'present_country_id' => 1,
         'permanent_country_id' => 1,
-        'name' => Str::random(20),
+        'name' => fake()->jobTitle,
         'type' => 'event',
-        'content' => Str::random(200),
-        'link' => '',
-        'promotion_data' => null,
+        'content' => fake()->paragraph,
+        'link' => fake()->url,
+        'promotion_data' => [
+            'promotion_image' => fake()->imageUrl,
+        ],
         'enabled' => '1',
     ]);
 }

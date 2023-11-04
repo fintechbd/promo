@@ -28,9 +28,10 @@ class UpdatePromotionRequest extends FormRequest
             'name' => ['required', 'string', 'min:5'],
             'type' => ['required', 'string', Rule::in(array_keys(config('fintech.promo.promotion_category', [])))],
             'content' => ['nullable', 'string', 'min:1'],
-            'link' => ['nullable', 'string', 'url'],
             'enabled' => ['required', 'boolean'],
-            'promotion_data' => ['nullable', 'array'],
+            'promotion_data' => ['required', 'array'],
+            'promotion_data.promotion_image.*' => ['nullable', 'string'],
+            'promotion_data.link.*' => ['nullable', 'string', 'url'],
         ];
     }
 
