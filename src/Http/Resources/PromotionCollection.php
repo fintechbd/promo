@@ -8,12 +8,28 @@ use Fintech\MetaData\Facades\MetaData;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
+/**
+ * @property integer $id
+ * @property integer $present_country_id
+ * @property integer $permanent_country_id
+ * @property string $name
+ * @property string $category
+ * @property string $content
+ * @property array $link
+ * @property boolean $enabled
+ * @property array $promotion_data
+ * @property mixed $presentCountry
+ * @property mixed $permanentCountry
+ * @method getFirstMediaUrl(string $string)
+ */
 class PromotionCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
+     * @param $request
+     * @return mixed
      */
-    public function toArray($request)
+    public function toArray($request): mixed
     {
         return $this->collection->map(function ($promotion) {
             $data = [
@@ -25,6 +41,7 @@ class PromotionCollection extends ResourceCollection
                 'name' => $promotion->name ?? null,
                 'category' => $promotion->category ?? null,
                 'content' => $promotion->content ?? null,
+                'image_png' => $this->getFirstMediaUrl('image_png') ?? null,
                 'link' => $promotion->link ?? null,
                 'enabled' => $promotion->enabled ?? false,
                 'promotion_data' => $promotion->promotion_data ?? [],
