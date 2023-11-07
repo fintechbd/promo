@@ -7,25 +7,24 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @property integer $id
- * @property integer $present_country_id
- * @property integer $permanent_country_id
+ * @property int $id
+ * @property int $present_country_id
+ * @property int $permanent_country_id
  * @property string $name
  * @property string $category
  * @property string $content
  * @property array $link
- * @property boolean $enabled
+ * @property bool $enabled
  * @property array $promotion_data
  * @property mixed $presentCountry
  * @property mixed $permanentCountry
+ *
  * @method getFirstMediaUrl(string $string)
  */
 class PromotionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     * @param Request $request
-     * @return array
      */
     public function toArray(Request $request): array
     {

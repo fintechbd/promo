@@ -9,25 +9,24 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
- * @property integer $id
- * @property integer $present_country_id
- * @property integer $permanent_country_id
+ * @property int $id
+ * @property int $present_country_id
+ * @property int $permanent_country_id
  * @property string $name
  * @property string $category
  * @property string $content
  * @property array $link
- * @property boolean $enabled
+ * @property bool $enabled
  * @property array $promotion_data
  * @property mixed $presentCountry
  * @property mixed $permanentCountry
+ *
  * @method getFirstMediaUrl(string $string)
  */
 class PromotionCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
-     * @param $request
-     * @return mixed
      */
     public function toArray($request): mixed
     {
