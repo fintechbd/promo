@@ -76,7 +76,7 @@ class PromotionCollection extends ResourceCollection
                 'per_page' => Constant::PAGINATE_LENGTHS,
                 'sort' => ['id', 'name', 'category', 'created_at', 'updated_at'],
                 'country_id' => $countries,
-                'type' => config('fintech.promo.promotion_types', [])
+                'type' => config('fintech.promo.promotion_types', []),
             ],
             'query' => $request->all(),
         ];
