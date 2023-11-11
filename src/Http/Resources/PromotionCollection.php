@@ -41,7 +41,6 @@ class PromotionCollection extends ResourceCollection
                 'type' => $promotion->type ?? null,
                 'content' => $promotion->content ?? null,
                 'photo' => $promotion->getFirstMediaUrl('photo') ?? null,
-                'link' => $promotion->link ?? null,
                 'enabled' => $promotion->enabled ?? false,
                 'promotion_data' => $promotion->promotion_data ?? [],
             ];

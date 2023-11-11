@@ -35,20 +35,16 @@ class PromotionResource extends JsonResource
             'permanent_country_id' => $this->permanent_country_id ?? null,
             'permanent_country_name' => null,
             'name' => $this->name ?? null,
-            'category' => $this->category ?? null,
+            'type' => $this->type ?? null,
             'content' => $this->content ?? null,
-            'image_png' => $this->getFirstMediaUrl('image_png') ?? null,
-            'link' => $this->link ?? null,
+            'photo' => $this->getFirstMediaUrl('photo') ?? null,
             'enabled' => $this->enabled ?? false,
             'promotion_data' => $this->promotion_data ?? [],
         ];
 
         if (Core::packageExists('MetaData')) {
-
-            $this->load(['presentCountry', 'permanentCountry']);
-
-            $data['present_country_name'] = $this->presentCountry->name;
-            $data['permanent_country_name'] = $this->permanentCountry->name;
+            $data['present_country_name'] = $this->presentCountry->name ?? null;
+            $data['permanent_country_name'] = $this->permanentCountry->name ?? null;
         }
 
         return $data;
