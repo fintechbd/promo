@@ -38,18 +38,16 @@ class PromotionCollection extends ResourceCollection
                 'permanent_country_id' => $promotion->permanent_country_id ?? null,
                 'permanent_country_name' => null,
                 'name' => $promotion->name ?? null,
-                'category' => $promotion->category ?? null,
+                'type' => $promotion->type ?? null,
                 'content' => $promotion->content ?? null,
-                'image_png' => $this->getFirstMediaUrl('image_png') ?? null,
+                'photo' => $promotion->getFirstMediaUrl('photo') ?? null,
                 'link' => $promotion->link ?? null,
                 'enabled' => $promotion->enabled ?? false,
                 'promotion_data' => $promotion->promotion_data ?? [],
             ];
 
             if (Core::packageExists('MetaData')) {
-
                 $promotion->load(['presentCountry', 'permanentCountry']);
-
                 $data['present_country_name'] = $promotion->presentCountry->name;
                 $data['permanent_country_name'] = $promotion->permanentCountry->name;
             }
@@ -78,6 +76,7 @@ class PromotionCollection extends ResourceCollection
                 'per_page' => Constant::PAGINATE_LENGTHS,
                 'sort' => ['id', 'name', 'category', 'created_at', 'updated_at'],
                 'country_id' => $countries,
+                'type' => config('fintech.promo.promotion_types', [])
             ],
             'query' => $request->all(),
         ];
