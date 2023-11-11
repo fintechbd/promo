@@ -39,13 +39,7 @@ class Promotion extends Model implements HasMedia
     */
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('image_png')
-            ->acceptsMimeTypes(['image/png'])
-            ->singleFile()
-            ->useDisk(config('filesystems.default', 'public'));
-
-        $this->addMediaCollection('image_svg')
-            ->acceptsMimeTypes(['image/svg+xml'])
+        $this->addMediaCollection('photo')
             ->singleFile()
             ->useDisk(config('filesystems.default', 'public'));
     }
@@ -73,10 +67,10 @@ class Promotion extends Model implements HasMedia
         $primaryKey = $this->getKey();
 
         $links = [
-            'show' => action_link(route('promotion.promotions.show', $primaryKey), __('core::messages.action.show'), 'get'),
-            'update' => action_link(route('promotion.promotions.update', $primaryKey), __('core::messages.action.update'), 'put'),
-            'destroy' => action_link(route('promotion.promotions.destroy', $primaryKey), __('core::messages.action.destroy'), 'delete'),
-            'restore' => action_link(route('promotion.promotions.restore', $primaryKey), __('core::messages.action.restore'), 'post'),
+            'show' => action_link(route('promo.promotions.show', $primaryKey), __('core::messages.action.show'), 'get'),
+            'update' => action_link(route('promo.promotions.update', $primaryKey), __('core::messages.action.update'), 'put'),
+            'destroy' => action_link(route('promo.promotions.destroy', $primaryKey), __('core::messages.action.destroy'), 'delete'),
+            'restore' => action_link(route('promo.promotions.restore', $primaryKey), __('core::messages.action.restore'), 'post'),
         ];
 
         if ($this->getAttribute('deleted_at') == null) {

@@ -25,11 +25,10 @@ class IndexPromotionRequest extends FormRequest
     {
         return [
             'search' => ['string', 'nullable', 'max:255'],
-            'category' => ['string', 'nullable', 'max:255'],
+            'type' => ['string', 'nullable', 'max:255'],
             'per_page' => ['integer', 'nullable', 'min:10', 'max:500'],
             'present_country_id' => ['integer', 'nullable', 'min:1'],
             'permanent_country_id' => ['integer', 'nullable', 'min:1'],
-            'type' => ['string', 'nullable'],
             'page' => ['integer', 'nullable', 'min:1'],
             'paginate' => ['boolean'],
             'sort' => ['string', 'nullable', 'min:2', 'max:255'],
