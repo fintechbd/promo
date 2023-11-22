@@ -17,9 +17,8 @@ class PromotionService
     /**
      * PromotionService constructor.
      */
-    public function __construct(PromotionRepository $promotionRepository)
+    public function __construct(private readonly PromotionRepository $promotionRepository)
     {
-        $this->promotionRepository = $promotionRepository;
     }
 
     public function list(array $filters = []): Collection|Paginator
