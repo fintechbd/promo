@@ -2,14 +2,14 @@
 
 namespace Fintech\Promo\Models;
 
+use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Core\Traits\AuditableTrait;
 use Fintech\Promo\Traits\PromotionMetaDataRelationTrait;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Promotion extends Model implements HasMedia
+class Promotion extends BaseModel implements HasMedia
 {
     use AuditableTrait;
     use InteractsWithMedia;

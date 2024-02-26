@@ -1,14 +1,14 @@
 <?php
 
+use Fintech\Promo\Facades\Promo;
 use Illuminate\Database\Eloquent\Model as MYSQLDBLEBUPAY;
 use Illuminate\Support\Str;
 use MongoDB\Laravel\Eloquent\Model as MONGODB;
-
 use function Pest\Laravel\getJson;
 
 function createPromotionEvent(): MYSQLDBLEBUPAY|MONGODB|null
 {
-    return \Fintech\Promo\Facades\Promo::promotion()->create([
+    return Promo::promotion()->create([
         'present_country_id' => 1,
         'permanent_country_id' => 1,
         'name' => fake()->jobTitle,
@@ -29,7 +29,7 @@ test('Promotion Event list', function () {
 
 function createPromotionNews(): MYSQLDBLEBUPAY|MONGODB|null
 {
-    return \Fintech\Promo\Facades\Promo::promotion()->create([
+    return Promo::promotion()->create([
         'present_country_id' => 1,
         'permanent_country_id' => 1,
         'name' => Str::random(20),
@@ -44,7 +44,7 @@ function createPromotionNews(): MYSQLDBLEBUPAY|MONGODB|null
 
 function createPromotionPartner(): MYSQLDBLEBUPAY|MONGODB|null
 {
-    return \Fintech\Promo\Facades\Promo::promotion()->create([
+    return Promo::promotion()->create([
         'present_country_id' => 1,
         'permanent_country_id' => 1,
         'name' => Str::random(20),
@@ -59,7 +59,7 @@ function createPromotionPartner(): MYSQLDBLEBUPAY|MONGODB|null
 
 function createPromotionAchievement(): MYSQLDBLEBUPAY|MONGODB|null
 {
-    return \Fintech\Promo\Facades\Promo::promotion()->create([
+    return Promo::promotion()->create([
         'present_country_id' => 1,
         'permanent_country_id' => 1,
         'name' => Str::random(20),
@@ -74,7 +74,7 @@ function createPromotionAchievement(): MYSQLDBLEBUPAY|MONGODB|null
 
 function createPromotionMedia(): MYSQLDBLEBUPAY|MONGODB|null
 {
-    return \Fintech\Promo\Facades\Promo::promotion()->create([
+    return Promo::promotion()->create([
         'present_country_id' => 1,
         'permanent_country_id' => 1,
         'name' => Str::random(20),
@@ -89,7 +89,7 @@ function createPromotionMedia(): MYSQLDBLEBUPAY|MONGODB|null
 
 function createPromotionBanner(): MYSQLDBLEBUPAY|MONGODB|null
 {
-    return \Fintech\Promo\Facades\Promo::promotion()->create([
+    return Promo::promotion()->create([
         'present_country_id' => 1,
         'permanent_country_id' => 1,
         'name' => Str::random(20),

@@ -7,7 +7,6 @@ use Fintech\Promo\Interfaces\PromotionRepository as InterfacesPromotionRepositor
 use Fintech\Promo\Models\Promotion;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 
 /**
@@ -19,7 +18,7 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
     {
         $model = app(config('fintech.promo.promotion_model', Promotion::class));
 
-        if (! $model instanceof Model) {
+        if (!$model instanceof Model) {
             throw new InvalidArgumentException("Eloquent repository require model class to be `Illuminate\Database\Eloquent\Model` instance.");
         }
 
@@ -35,7 +34,7 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
         $query = $this->model->newQuery();
 
         //Searching
-        if (! empty($filters['search'])) {
+        if (!empty($filters['search'])) {
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {
@@ -45,15 +44,15 @@ class PromotionRepository extends EloquentRepository implements InterfacesPromot
             }
         }
 
-        if (! empty($filters['type'])) {
+        if (!empty($filters['type'])) {
             $query->where('type', $filters['type']);
         }
 
-        if (! empty($filters['present_country_id'])) {
+        if (!empty($filters['present_country_id'])) {
             $query->where('present_country_id', $filters['present_country_id']);
         }
 
-        if (! empty($filters['permanent_country_id'])) {
+        if (!empty($filters['permanent_country_id'])) {
             $query->where('permanent_country_id', $filters['permanent_country_id']);
         }
 

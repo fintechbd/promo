@@ -7,6 +7,7 @@ use Fintech\Core\Supports\Constant;
 use Fintech\MetaData\Facades\MetaData;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use stdClass;
 
 /**
  * @property int $id
@@ -25,6 +26,31 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
  */
 class PromotionCollection extends ResourceCollection
 {
+    /**
+     * Get additional data that should be returned with the resource array.
+     *
+     * @return array<string, mixed>
+     */
+    public function with(Request $request): array
+    {
+        $countries = new stdClass();
+
+        if (Core::packageExists('MetaData')) {
+            $countries = MetaData::country()->list(['enabled' => true])->pluck('name', 'id')->toArray();
+        }
+
+        return [
+            'options' => [
+                'dir' => Constant::SORT_DIRECTIONS,
+                'per_page' => Constant::PAGINATE_LENGTHS,
+                'sort' => ['id', 'name', 'category', 'created_at', 'updated_at'],
+                'country_id' => $countries,
+                'type' => config('fintech.promo.promotion_types', []),
+            ],
+            'query' => $request->all(),
+        ];
+    }
+
     /**
      * Transform the resource collection into an array.
      */
@@ -54,30 +80,5 @@ class PromotionCollection extends ResourceCollection
             return $data;
 
         })->toArray();
-    }
-
-    /**
-     * Get additional data that should be returned with the resource array.
-     *
-     * @return array<string, mixed>
-     */
-    public function with(Request $request): array
-    {
-        $countries = new \stdClass();
-
-        if (Core::packageExists('MetaData')) {
-            $countries = MetaData::country()->list(['enabled' => true])->pluck('name', 'id')->toArray();
-        }
-
-        return [
-            'options' => [
-                'dir' => Constant::SORT_DIRECTIONS,
-                'per_page' => Constant::PAGINATE_LENGTHS,
-                'sort' => ['id', 'name', 'category', 'created_at', 'updated_at'],
-                'country_id' => $countries,
-                'type' => config('fintech.promo.promotion_types', []),
-            ],
-            'query' => $request->all(),
-        ];
     }
 }

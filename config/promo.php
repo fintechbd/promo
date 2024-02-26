@@ -1,6 +1,9 @@
 <?php
 
 // config for Fintech/Promo
+use Fintech\Promo\Models\Promotion;
+use Fintech\Promo\Repositories\Eloquent\PromotionRepository;
+
 return [
 
     /*
@@ -31,7 +34,7 @@ return [
     |
     | This value will be used to across system where model is needed
     */
-    'promotion_model' => \Fintech\Promo\Models\Promotion::class,
+    'promotion_model' => Promotion::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -61,7 +64,7 @@ return [
     */
 
     'repositories' => [
-        \Fintech\Promo\Interfaces\PromotionRepository::class => \Fintech\Promo\Repositories\Eloquent\PromotionRepository::class,
+        \Fintech\Promo\Interfaces\PromotionRepository::class => PromotionRepository::class,
 
         //** Repository Binding Config Point Do not Remove **//
     ],

@@ -4,8 +4,8 @@ namespace Fintech\Promo\Services;
 
 use Fintech\Promo\Interfaces\PromotionRepository;
 use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use MongoDB\Laravel\Eloquent\Model;
 
 /**
  * Class PromotionService
@@ -21,23 +21,12 @@ class PromotionService
     {
     }
 
-    public function list(array $filters = []): Collection|Paginator
-    {
-        return $this->promotionRepository->list($filters);
-
-    }
-
-    public function create(array $inputs = []): Model|\MongoDB\Laravel\Eloquent\Model|null
-    {
-        return $this->promotionRepository->create($inputs);
-    }
-
-    public function find(int|string $id, bool $onlyTrashed = false): Model|\MongoDB\Laravel\Eloquent\Model|null
+    public function find(int|string $id, bool $onlyTrashed = false): Model|Model|null
     {
         return $this->promotionRepository->find($id, $onlyTrashed);
     }
 
-    public function update(int|string $id, array $inputs = []): Model|\MongoDB\Laravel\Eloquent\Model|null
+    public function update(int|string $id, array $inputs = []): Model|Model|null
     {
         return $this->promotionRepository->update($id, $inputs);
     }
@@ -57,8 +46,19 @@ class PromotionService
         return $this->permissionRepository->list($filters);
     }
 
+    public function list(array $filters = []): Collection|Paginator
+    {
+        return $this->promotionRepository->list($filters);
+
+    }
+
     public function import(array $filters): mixed
     {
         return $this->permissionRepository->create($filters);
+    }
+
+    public function create(array $inputs = []): Model|Model|null
+    {
+        return $this->promotionRepository->create($inputs);
     }
 }

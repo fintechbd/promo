@@ -10,6 +10,17 @@ class TestCase extends Orchestra
 {
     use DatabaseMigrations;
 
+    public function getEnvironmentSetUp($app)
+    {
+        config()->set('app.env', 'testing');
+        config()->set('database.default', 'testing');
+
+        /*
+        $migration = include __DIR__.'/../database/migrations/create_promo_table.php.stub';
+        $migration->up();
+        */
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -20,16 +31,5 @@ class TestCase extends Orchestra
         return [
             PromoServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('app.env', 'testing');
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_promo_table.php.stub';
-        $migration->up();
-        */
     }
 }
