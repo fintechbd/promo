@@ -60,6 +60,8 @@
     "extra": {
         "laravel": {
             "providers": [
+                "Fintech\\Promo\\RepositoryServiceProvider",
+                "Fintech\\Promo\\RouteServiceProvider",
                 "Fintech\\Promo\\PromoServiceProvider"
             ],
             "aliases": {
