@@ -18,6 +18,9 @@ class PromoServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/promo.php', 'fintech.promo'
         );
+
+        $this->app->register(RouteServiceProvider::class);
+        $this->app->register(RepositoryServiceProvider::class);
     }
 
     /**
