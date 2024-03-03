@@ -21,12 +21,12 @@ class PromotionService
     {
     }
 
-    public function find(int|string $id, bool $onlyTrashed = false): Model|Model|null
+    public function find(int|string $id, bool $onlyTrashed = false): Model|null
     {
         return $this->promotionRepository->find($id, $onlyTrashed);
     }
 
-    public function update(int|string $id, array $inputs = []): Model|Model|null
+    public function update(int|string $id, array $inputs = []): Model|null
     {
         return $this->promotionRepository->update($id, $inputs);
     }
@@ -57,7 +57,7 @@ class PromotionService
         return $this->permissionRepository->create($filters);
     }
 
-    public function create(array $inputs = []): Model|Model|null
+    public function create(array $inputs = []): Model|null
     {
         return $this->promotionRepository->create($inputs);
     }
