@@ -2,10 +2,10 @@
 
 namespace Fintech\Promo\Services;
 
+use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Promo\Interfaces\PromotionRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Collection;
-use MongoDB\Laravel\Eloquent\Model;
 
 /**
  * Class PromotionService
@@ -21,12 +21,12 @@ class PromotionService
     {
     }
 
-    public function find(int|string $id, bool $onlyTrashed = false): ?Model
+    public function find(int|string $id, bool $onlyTrashed = false): ?BaseModel
     {
         return $this->promotionRepository->find($id, $onlyTrashed);
     }
 
-    public function update(int|string $id, array $inputs = []): ?Model
+    public function update(int|string $id, array $inputs = []): ?BaseModel
     {
         return $this->promotionRepository->update($id, $inputs);
     }
@@ -43,7 +43,7 @@ class PromotionService
 
     public function export(array $filters): mixed
     {
-        return $this->permissionRepository->list($filters);
+        return $this->promotionRepository->list($filters);
     }
 
     public function list(array $filters = []): Collection|Paginator
@@ -54,10 +54,10 @@ class PromotionService
 
     public function import(array $filters): mixed
     {
-        return $this->permissionRepository->create($filters);
+        return $this->promotionRepository->create($filters);
     }
 
-    public function create(array $inputs = []): ?Model
+    public function create(array $inputs = []): ?BaseModel
     {
         return $this->promotionRepository->create($inputs);
     }
