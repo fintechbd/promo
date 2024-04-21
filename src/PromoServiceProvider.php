@@ -2,12 +2,15 @@
 
 namespace Fintech\Promo;
 
+use Fintech\Core\Traits\RegisterPackageTrait;
 use Fintech\Promo\Commands\InstallCommand;
 use Fintech\Promo\Commands\PromoCommand;
 use Illuminate\Support\ServiceProvider;
 
 class PromoServiceProvider extends ServiceProvider
 {
+    use RegisterPackageTrait;
+
     /**
      * Register any application services.
      *
@@ -15,8 +18,10 @@ class PromoServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->packageCode = 'promo';
+
         $this->mergeConfigFrom(
-            __DIR__.'/../config/promo.php', 'fintech.promo'
+            __DIR__ . '/../config/promo.php', 'fintech.promo'
         );
 
         $this->app->register(RouteServiceProvider::class);
@@ -28,22 +33,24 @@ class PromoServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->injectOnConfig();
+
         $this->publishes([
-            __DIR__.'/../config/promo.php' => config_path('fintech/promo.php'),
+            __DIR__ . '/../config/promo.php' => config_path('fintech/promo.php'),
         ]);
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
-        $this->loadTranslationsFrom(__DIR__.'/../lang', 'promo');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'promo');
 
         $this->publishes([
-            __DIR__.'/../lang' => $this->app->langPath('vendor/promo'),
+            __DIR__ . '/../lang' => $this->app->langPath('vendor/promo'),
         ]);
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'promo');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'promo');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/promo'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/promo'),
         ]);
 
         if ($this->app->runningInConsole()) {
