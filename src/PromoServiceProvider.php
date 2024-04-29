@@ -5,6 +5,8 @@ namespace Fintech\Promo;
 use Fintech\Core\Traits\RegisterPackageTrait;
 use Fintech\Promo\Commands\InstallCommand;
 use Fintech\Promo\Commands\PromoCommand;
+use Fintech\Promo\Providers\RepositoryServiceProvider;
+use Fintech\Promo\Providers\RouteServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class PromoServiceProvider extends ServiceProvider
