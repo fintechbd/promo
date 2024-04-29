@@ -5,8 +5,6 @@ namespace Fintech\Promo;
 use Fintech\Core\Traits\RegisterPackageTrait;
 use Fintech\Promo\Commands\InstallCommand;
 use Fintech\Promo\Commands\PromoCommand;
-use Fintech\Promo\Providers\RepositoryServiceProvider;
-use Fintech\Promo\Providers\RouteServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class PromoServiceProvider extends ServiceProvider
@@ -26,8 +24,8 @@ class PromoServiceProvider extends ServiceProvider
             __DIR__.'/../config/promo.php', 'fintech.promo'
         );
 
-        $this->app->register(RouteServiceProvider::class);
-        $this->app->register(RepositoryServiceProvider::class);
+        $this->app->register(\Fintech\Promo\Providers\RouteServiceProvider::class);
+        $this->app->register(\Fintech\Promo\Providers\RepositoryServiceProvider::class);
     }
 
     /**
