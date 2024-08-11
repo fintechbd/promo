@@ -26,8 +26,6 @@ class Promotion extends BaseModel implements HasMedia
 
     protected $guarded = ['id'];
 
-
-
     protected $casts = ['promotion_data' => 'array', 'restored_at' => 'datetime', 'enabled' => 'bool'];
 
     protected $hidden = ['creator_id', 'editor_id', 'destroyer_id', 'restorer_id'];
