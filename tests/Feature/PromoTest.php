@@ -4,7 +4,6 @@ use Fintech\Promo\Facades\Promo;
 use Illuminate\Database\Eloquent\Model as MYSQLDBLEBUPAY;
 use Illuminate\Support\Str;
 use MongoDB\Laravel\Eloquent\Model as MONGODB;
-
 use function Pest\Laravel\getJson;
 
 function createPromotionEvent(): MYSQLDBLEBUPAY|MONGODB|null

@@ -19,5 +19,7 @@ if (Core::packageExists('MetaData')) {
         }
     }
 } else {
-    trait PromotionMetaDataRelationTrait {}
+    trait PromotionMetaDataRelationTrait
+    {
+    }
 }
