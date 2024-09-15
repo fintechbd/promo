@@ -21,7 +21,7 @@ class PromoServiceProvider extends ServiceProvider
         $this->packageCode = 'promo';
 
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/promo.php', 'fintech.promo'
+            __DIR__.'/../config/promo.php', 'fintech.promo'
         );
 
         $this->app->register(RepositoryServiceProvider::class);
@@ -35,23 +35,23 @@ class PromoServiceProvider extends ServiceProvider
         $this->injectOnConfig();
 
         $this->publishes([
-            __DIR__ . '/../config/promo.php' => config_path('fintech/promo.php'),
+            __DIR__.'/../config/promo.php' => config_path('fintech/promo.php'),
         ]);
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'promo');
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'promo');
 
         $this->publishes([
-            __DIR__ . '/../lang' => $this->app->langPath('vendor/promo'),
+            __DIR__.'/../lang' => $this->app->langPath('vendor/promo'),
         ]);
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'promo');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'promo');
 
-        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/promo'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/promo'),
         ]);
 
         if ($this->app->runningInConsole()) {
