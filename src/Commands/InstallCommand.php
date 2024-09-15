@@ -12,7 +12,7 @@ class InstallCommand extends Command
 
     public function handle(): int
     {
-        $this->comment('All done');
+        $this->infoMessage("Module Installation", 'RUNNING');
 
         return self::SUCCESS;
     }
