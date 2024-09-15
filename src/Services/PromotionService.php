@@ -17,7 +17,9 @@ class PromotionService
     /**
      * PromotionService constructor.
      */
-    public function __construct(private readonly PromotionRepository $promotionRepository) {}
+    public function __construct(private readonly PromotionRepository $promotionRepository)
+    {
+    }
 
     public function find(int|string $id, bool $onlyTrashed = false): ?BaseModel
     {

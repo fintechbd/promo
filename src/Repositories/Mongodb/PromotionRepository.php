@@ -19,7 +19,7 @@ class PromotionRepository extends MongodbRepository implements InterfacesPromoti
     {
         $model = app(config('fintech.promo.promotion_model', Promotion::class));
 
-        if (! $model instanceof Model) {
+        if (!$model instanceof Model) {
             throw new InvalidArgumentException("Mongodb repository require model class to be `MongoDB\Laravel\Eloquent\Model` instance.");
         }
 
@@ -35,7 +35,7 @@ class PromotionRepository extends MongodbRepository implements InterfacesPromoti
         $query = $this->model->newQuery();
 
         //Searching
-        if (isset($filters['search']) && ! empty($filters['search'])) {
+        if (isset($filters['search']) && !empty($filters['search'])) {
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {
@@ -43,12 +43,12 @@ class PromotionRepository extends MongodbRepository implements InterfacesPromoti
             }
         }
 
-        if (isset($filters['promotion_type']) && ! empty($filters['promotion_type'])) {
+        if (isset($filters['promotion_type']) && !empty($filters['promotion_type'])) {
             $query->where('promotion_type', $filters['promotion_type']);
         }
 
         //Display Trashed
-        if (isset($filters['trashed']) && ! empty($filters['trashed'])) {
+        if (isset($filters['trashed']) && !empty($filters['trashed'])) {
             $query->onlyTrashed();
         }
 
