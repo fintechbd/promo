@@ -12,8 +12,10 @@ use Illuminate\Support\Collection;
  *
  * @property PromotionRepository $promotionRepository
  */
-class PromotionService extends \Fintech\Core\Abstracts\Service
+class PromotionService
 {
+    use \Fintech\Core\Traits\HasFindWhereSearch;
+
     /**
      * PromotionService constructor.
      */
