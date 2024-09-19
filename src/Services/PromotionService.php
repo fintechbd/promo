@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
  *
  * @property PromotionRepository $promotionRepository
  */
-class PromotionService
+class PromotionService extends \Fintech\Core\Abstracts\Service
 {
     /**
      * PromotionService constructor.
