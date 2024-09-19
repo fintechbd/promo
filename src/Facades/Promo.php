@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static \Illuminate\Contracts\Pagination\Paginator|\Illuminate\Support\Collection|PromotionService promotion(array $filters = null)
- *                                             // Crud Service Method Point Do not Remove //
+ *                                                                                                                                            // Crud Service Method Point Do not Remove //
  *
  * @see \Fintech\Promo\Promo
  */
