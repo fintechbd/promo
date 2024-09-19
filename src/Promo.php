@@ -6,9 +6,9 @@ use Fintech\Promo\Services\PromotionService;
 
 class Promo
 {
-    public function promotion()
-    {
-        return app(PromotionService::class);
+    public function promotion($filters = null)
+{
+	return \singleton(PromotionService::class, $filters);
     }
 
     //** Crud Service Method Point Do not Remove **//
