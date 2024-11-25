@@ -3,7 +3,7 @@
 namespace Fintech\Promo\Models;
 
 use Fintech\Core\Abstracts\BaseModel;
-use Fintech\Core\Traits\BlameableTrait;
+use Fintech\Core\Traits\Audits\BlameableTrait;
 use Fintech\Promo\Traits\PromotionMetaDataRelationTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use OwenIt\Auditing\Contracts\Auditable;

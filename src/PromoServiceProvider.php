@@ -2,7 +2,7 @@
 
 namespace Fintech\Promo;
 
-use Fintech\Core\Traits\RegisterPackageTrait;
+use Fintech\Core\Traits\Packages\RegisterPackageTrait;
 use Fintech\Promo\Commands\InstallCommand;
 use Fintech\Promo\Providers\RepositoryServiceProvider;
 use Illuminate\Support\ServiceProvider;
