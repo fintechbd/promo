@@ -1,6 +1,6 @@
 <?php
 
-use Fintech\RestApi\Http\Controllers\Promo\PromotionController;
+use Fintech\Promo\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 
