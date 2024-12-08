@@ -71,7 +71,7 @@ class PromotionController extends Controller
             }
 
             return response()->created([
-                'message' => __('restapi::messages.resource.created', ['model' => 'Promotion']),
+                'message' => __('core::messages.resource.created', ['model' => 'Promotion']),
                 'id' => $promotion->getKey(),
             ]);
 
@@ -132,7 +132,7 @@ class PromotionController extends Controller
                 throw (new UpdateOperationException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
 
-            return response()->updated(__('restapi::messages.resource.updated', ['model' => 'Promotion']));
+            return response()->updated(__('core::messages.resource.updated', ['model' => 'Promotion']));
 
         } catch (ModelNotFoundException $exception) {
 
@@ -165,7 +165,7 @@ class PromotionController extends Controller
                 throw (new DeleteOperationException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
 
-            return response()->deleted(__('restapi::messages.resource.deleted', ['model' => 'Promotion']));
+            return response()->deleted(__('core::messages.resource.deleted', ['model' => 'Promotion']));
 
         } catch (ModelNotFoundException $exception) {
 
@@ -199,7 +199,7 @@ class PromotionController extends Controller
                 throw (new RestoreOperationException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
 
-            return response()->restored(__('restapi::messages.resource.restored', ['model' => 'Promotion']));
+            return response()->restored(__('core::messages.resource.restored', ['model' => 'Promotion']));
 
         } catch (ModelNotFoundException $exception) {
 
@@ -225,7 +225,7 @@ class PromotionController extends Controller
 
             $promotionPaginate = Promo::promotion()->export($inputs);
 
-            return response()->exported(__('restapi::messages.resource.exported', ['model' => 'Promotion']));
+            return response()->exported(__('core::messages.resource.exported', ['model' => 'Promotion']));
 
         } catch (Exception $exception) {
 
