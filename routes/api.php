@@ -24,7 +24,7 @@ if (Config::get('fintech.promo.enabled')) {
                 Route::apiResource('promotions', PromotionController::class);
                 //            Route::post('promotions/{promotion}/restore', [PromotionController::class, 'restore'])->name('promotions.restore');
 
-                //DO NOT REMOVE THIS LINE//
+                // DO NOT REMOVE THIS LINE//
             });
     });
 }

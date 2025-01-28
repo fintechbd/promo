@@ -53,7 +53,7 @@ return [
         'banner' => 'Banner',
     ],
 
-    //** Model Config Point Do not Remove **//
+    // ** Model Config Point Do not Remove **//
 
     /*
     |--------------------------------------------------------------------------
@@ -66,6 +66,6 @@ return [
     'repositories' => [
         \Fintech\Promo\Interfaces\PromotionRepository::class => PromotionRepository::class,
 
-        //** Repository Binding Config Point Do not Remove **//
+        // ** Repository Binding Config Point Do not Remove **//
     ],
 ];

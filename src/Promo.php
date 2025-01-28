@@ -11,5 +11,5 @@ class Promo
         return \singleton(PromotionService::class, $filters);
     }
 
-    //** Crud Service Method Point Do not Remove **//
+    // ** Crud Service Method Point Do not Remove **//
 }
