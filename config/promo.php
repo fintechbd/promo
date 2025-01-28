@@ -12,7 +12,7 @@ return [
     |--------------------------------------------------------------------------
     | this setting enable the api will be available or not
     */
-    'enabled' => env('PACKAGE_PROMO_ENABLED', true),
+    'enabled' => env('PROMO_ENABLED', true),
 
     /*
     |--------------------------------------------------------------------------
