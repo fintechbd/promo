@@ -36,7 +36,7 @@ class PromoServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../config/promo.php' => config_path('fintech/promo.php'),
-        ]);
+        ], 'fintech-promo-config');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
@@ -44,7 +44,7 @@ class PromoServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../lang' => $this->app->langPath('vendor/promo'),
-        ]);
+        ], 'fintech-promo-lang');
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'promo');
 
@@ -52,7 +52,7 @@ class PromoServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/promo'),
-        ]);
+        ], 'fintech-promo-views');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
