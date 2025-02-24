@@ -99,11 +99,7 @@ class PromotionController extends Controller
 
             return new PromotionResource($promotion);
 
-        } catch (ModelNotFoundException $exception) {
-
-            return response()->notfound($exception->getMessage());
-
-        } catch (Exception $exception) {
+        }  catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -134,11 +130,7 @@ class PromotionController extends Controller
 
             return response()->updated(__('core::messages.resource.updated', ['model' => 'Promotion']));
 
-        } catch (ModelNotFoundException $exception) {
-
-            return response()->notfound($exception->getMessage());
-
-        } catch (Exception $exception) {
+        }  catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -167,11 +159,7 @@ class PromotionController extends Controller
 
             return response()->deleted(__('core::messages.resource.deleted', ['model' => 'Promotion']));
 
-        } catch (ModelNotFoundException $exception) {
-
-            return response()->notfound($exception->getMessage());
-
-        } catch (Exception $exception) {
+        }  catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -201,11 +189,7 @@ class PromotionController extends Controller
 
             return response()->restored(__('core::messages.resource.restored', ['model' => 'Promotion']));
 
-        } catch (ModelNotFoundException $exception) {
-
-            return response()->notfound($exception->getMessage());
-
-        } catch (Exception $exception) {
+        }  catch (Exception $exception) {
 
             return response()->failed($exception);
         }
