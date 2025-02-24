@@ -99,7 +99,7 @@ class PromotionController extends Controller
 
             return new PromotionResource($promotion);
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -130,7 +130,7 @@ class PromotionController extends Controller
 
             return response()->updated(__('core::messages.resource.updated', ['model' => 'Promotion']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -159,7 +159,7 @@ class PromotionController extends Controller
 
             return response()->deleted(__('core::messages.resource.deleted', ['model' => 'Promotion']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -189,7 +189,7 @@ class PromotionController extends Controller
 
             return response()->restored(__('core::messages.resource.restored', ['model' => 'Promotion']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
