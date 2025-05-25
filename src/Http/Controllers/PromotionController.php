@@ -122,7 +122,7 @@ class PromotionController extends Controller
 
             $inputs = $request->validated();
 
-            if (!promo()->promotion()->update($id, $inputs)) {
+            if (! promo()->promotion()->update($id, $inputs)) {
 
                 throw (new UpdateOperationException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
@@ -151,7 +151,7 @@ class PromotionController extends Controller
                 throw (new ModelNotFoundException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
 
-            if (!promo()->promotion()->destroy($id)) {
+            if (! promo()->promotion()->destroy($id)) {
 
                 throw (new DeleteOperationException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
@@ -181,7 +181,7 @@ class PromotionController extends Controller
                 throw (new ModelNotFoundException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
 
-            if (!promo()->promotion()->restore($id)) {
+            if (! promo()->promotion()->restore($id)) {
 
                 throw (new RestoreOperationException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
