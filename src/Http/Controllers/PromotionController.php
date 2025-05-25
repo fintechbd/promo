@@ -7,7 +7,6 @@ use Fintech\Core\Exceptions\DeleteOperationException;
 use Fintech\Core\Exceptions\RestoreOperationException;
 use Fintech\Core\Exceptions\StoreOperationException;
 use Fintech\Core\Exceptions\UpdateOperationException;
-use Fintech\Promo\Facades\Promo;
 use Fintech\Promo\Http\Requests\ImportPromotionRequest;
 use Fintech\Promo\Http\Requests\IndexPromotionRequest;
 use Fintech\Promo\Http\Requests\StorePromotionRequest;
@@ -43,7 +42,7 @@ class PromotionController extends Controller
         try {
             $inputs = $request->validated();
 
-            $promotionPaginate = Promo::promotion()->list($inputs);
+            $promotionPaginate = promo()->promotion()->list($inputs);
 
             return new PromotionCollection($promotionPaginate);
 
@@ -64,7 +63,7 @@ class PromotionController extends Controller
         try {
             $inputs = $request->validated();
 
-            $promotion = Promo::promotion()->create($inputs);
+            $promotion = promo()->promotion()->create($inputs);
 
             if (! $promotion) {
                 throw (new StoreOperationException)->setModel(config('fintech.promo.promotion_model'));
@@ -91,7 +90,7 @@ class PromotionController extends Controller
     {
         try {
 
-            $promotion = Promo::promotion()->find($id);
+            $promotion = promo()->promotion()->find($id);
 
             if (! $promotion) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.promo.promotion_model'), $id);
@@ -115,7 +114,7 @@ class PromotionController extends Controller
     {
         try {
 
-            $promotion = Promo::promotion()->find($id);
+            $promotion = promo()->promotion()->find($id);
 
             if (! $promotion) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.promo.promotion_model'), $id);
@@ -123,7 +122,7 @@ class PromotionController extends Controller
 
             $inputs = $request->validated();
 
-            if (! Promo::promotion()->update($id, $inputs)) {
+            if (!promo()->promotion()->update($id, $inputs)) {
 
                 throw (new UpdateOperationException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
@@ -146,13 +145,13 @@ class PromotionController extends Controller
     {
         try {
 
-            $promotion = Promo::promotion()->find($id);
+            $promotion = promo()->promotion()->find($id);
 
             if (! $promotion) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
 
-            if (! Promo::promotion()->destroy($id)) {
+            if (!promo()->promotion()->destroy($id)) {
 
                 throw (new DeleteOperationException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
@@ -176,13 +175,13 @@ class PromotionController extends Controller
     {
         try {
 
-            $promotion = Promo::promotion()->find($id, true);
+            $promotion = promo()->promotion()->find($id, true);
 
             if (! $promotion) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
 
-            if (! Promo::promotion()->restore($id)) {
+            if (!promo()->promotion()->restore($id)) {
 
                 throw (new RestoreOperationException)->setModel(config('fintech.promo.promotion_model'), $id);
             }
@@ -207,7 +206,7 @@ class PromotionController extends Controller
         try {
             $inputs = $request->validated();
 
-            $promotionPaginate = Promo::promotion()->export($inputs);
+            $promotionPaginate = promo()->promotion()->export($inputs);
 
             return response()->exported(__('core::messages.resource.exported', ['model' => 'Promotion']));
 
@@ -229,7 +228,7 @@ class PromotionController extends Controller
         try {
             $inputs = $request->validated();
 
-            $promotionPaginate = Promo::promotion()->list($inputs);
+            $promotionPaginate = promo()->promotion()->list($inputs);
 
             return new PromotionCollection($promotionPaginate);
 
